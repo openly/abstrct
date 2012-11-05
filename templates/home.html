@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>LCC :: SJCE</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="/lcc/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/lcc/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="/lcc/css/main.css">
+	<style>
+	body {
+		padding-top: 60px;
+		padding-bottom: 40px;
+	}
+
+	</style>
+	<script src="/lcc/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner"> 
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.html">LCC</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="index.php">Home</a></li>
+						<li><a href="index.php/events">Events</a></li>
+						<li><a href="index.php/members">Members</a></li>
+						<li><a href="index.php/contact">Contact</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="hero-unit">
+			<h2>Linux Campus Club - SJCE</h2>
+			<p>Linux Campus Club is an organization under the department of Computer Science SJCE Mysore India, with a primary goal of fostering the use of free open source software among the students.It was started back in 2004. In this endeavor, LCC was founded with following goals:</p>
+			<ul>
+				<li>Advocating the adoption of FOSS instead of proprietary software.</li>
+				<li>Educating and training members to use GNU/Linux and associated components.</li>
+				<li>Providing support and guidance for new users.</li>
+				<li>Creating an environment which facilitates free discussion leading to sharing of ideas and knowledge.</li>
+			</ul>	
+			<a class="btn btn-primary btn-large">Know more &raquo;</a> 
+			<a class="btn btn-large" href="#register" data-toggle="modal">Register &raquo;</a>
+		</div>
+		<!-- Example row of columns -->
+		{{{latest_events}}}
+	</div>	
+
+	<div class="modal hide fade out" id="register" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3 id="myModalLabel">Register</h3>
+		</div>
+		<form style="margin-bottom:0;" action='index.php/register' method='post' id="member_reg">
+			<div class="modal-body">
+				<div class="errors"></div>
+				{{{member_registration_form}}}
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				<button class="btn btn-primary">Register</button>
+			</div>
+		</form> 
+	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/lcc/js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
+
+	<script src="/lcc/js/vendor/bootstrap.min.js"></script>
+
+	<script src="/lcc/js/plugins.js"></script>
+	<script src="/lcc/js/main.js"></script>
+
+	<script type="text/javascript">
+	$(function(){
+		$('#member_reg').submit(function(e){
+			$.post($(this).attr('action'),$(this).serialize(),function(data){$('body').append(data);});
+			e.preventDefault();
+		})
+	})
+	</script>
+	<script>
+	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+</body>
+</html>

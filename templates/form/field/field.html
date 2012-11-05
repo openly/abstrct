@@ -1,0 +1,21 @@
+<div class="control-group">
+	{{#label}}<label class="control-label" for="{{fieldname}}">{{{label}}}</label>{{/label}}
+	<div class="controls">
+{{#input}}
+	<input {{#type}}type="{{type}}"{{/type}} class="input-xlarge {{classes}}" value="{{value}}" {{#placeholder}} placeholder="{{placeholder}}"{{/placeholder}} name="{{fieldname}}"{{#disabled}} disabled{{/disabled}} />
+{{/input}}
+{{#select}}
+<select{{#multiple}} multiple="multiple" {{/multiple}} class="input-xlarge {{classes}}" {{#placeholder}} placeholder="{{placeholder}}"{{/placeholder}} name="{{fieldname}}"{{#disabled}} disabled{{/disabled}} >
+{{#options}}
+<option value="{{value}}" {{#selected}}SELECTED{{/selected}}>{{label}}</option>
+{{/options}}
+</select>{{/select}}
+{{#multipleInput}}
+{{#values}}<input type="{{type}}" name="{{fieldname}}" value = "{{value}}" {{#checked}}checked{{/checked}}>{{#label}}{{label}}{{/label}}</input>
+{{/values}}
+{{/multipleInput}}
+{{#textarea}}
+<textarea{{#classes}} class="{{classes}}"{{/classes}} {{#placeholder}} placeholder="{{placeholder}}"{{/placeholder}} name="{{fieldname}}"{{#disabled}} disabled{{/disabled}}>{{value}}</textarea>
+{{/textarea}}
+	</div>
+</div>

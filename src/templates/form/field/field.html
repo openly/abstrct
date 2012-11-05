@@ -1,0 +1,15 @@
+{{#label}}<label for="{{fieldname}}">{{{label}}}</label>
+{{/label}}
+{{#input}}<input {{#type}} type="{{type}}"{{/type}}{{#classes}} class="{{classes}}"{{/classes}} value="{{value}}"{{#placeholder}} placeholder="{{placeholder}}"{{/placeholder}} name="{{fieldname}}"{{#disabled}} disabled{{/disabled}} />{{/input}}
+{{#select}}<select{{#multiple}} multiple="multiple" {{/multiple}}{{#classes}} class="{{classes}}"{{/classes}}{{#placeholder}} placeholder="{{placeholder}}"{{/placeholder}} name="{{fieldname}}"{{#disabled}} disabled{{/disabled}} >
+{{#options}}
+<option value="{{value}}" {{#selected}}SELECTED{{/selected}}>{{label}}</option>
+{{/options}}
+</select>{{/select}}
+{{#multipleInput}}
+{{#values}}<input type="{{type}}" name="{{fieldname}}" value = "{{value}}" {{#checked}}checked{{/checked}}>{{#label}}{{label}}{{/label}}</input>
+{{/values}}
+{{/multipleInput}}
+{{#textarea}}
+<textarea{{#classes}} class="{{classes}}"{{/classes}} {{#placeholder}} placeholder="{{placeholder}}"{{/placeholder}} name="{{fieldname}}"{{#disabled}} disabled{{/disabled}}>{{value}}</textarea>
+{{/textarea}}

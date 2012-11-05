@@ -1,0 +1,113 @@
+            <?php foreach ( $suites as $key => $suite ): ?>
+
+            <div class='suite' data-suite-status='<?php echo $this->escape($suite["status"]); ?>' data-suite-time='<?php echo $this->escape($suite["time"]); ?>'>
+                <h3><?php echo $this->escape($suite['name']); ?></h3>
+                <div class='suite-status'>
+                    <span class="label label-<?php echo $this->escape($suite['status']); ?>"><?php echo $this->escape(ucfirst($suite['status'])); ?></span>
+                </div>
+
+                <?php foreach ( $suite['tests'] as $test ): ?>
+                <div class="alert alert-block alert-<?php echo $this->escape($test['status']); ?>">
+                    <h4 class="alert-heading"><?php echo $this->escape($test['name']); ?></h4>
+                    <?php if ( $test['message']): ?>
+                    <p class='test-message'>
+                        <strong><?php echo $this->escape($test['message']); ?></strong>
+                    </p>
+                    <?php endif; ?>
+                    <ul class='nav'>
+                        <li class='test-details'>
+                        <em>Execution time:</em>
+                        <?php echo $this->escape($test['time']); ?>s
+                        </li>
+                        <?php if ( $test['output']): ?>
+                        <li class='test-details'>
+                            <em>Debug Output:</em>
+                            <pre><?php echo $this->escape($test['output']); ?></pre>
+                        </li>
+                        <?php endif; ?>
+                        <?php if ( $test['trace']): ?>
+                        <li class='test-details'>
+                            <em>Stack Trace:</em>
+                            <pre><?php echo $this->escape($test['trace']); ?></pre>
+                        </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <?php endforeach; ?>
+            </div>
+
+            <?php endforeach; ?>
+
+            <div class='row statistics'>
+                <div class='span4'>
+                    <h3>Suite Statistics</h3>
+
+                    <h4>Failed (<?php echo $this->escape($stats['suites']['failed']); ?>/<?php echo $this->escape($stats['suites']['total']); ?>)</h4>
+                    <div class="progress progress-danger">
+                      <div class="bar" style="width: <?php echo $this->escape($stats['suites']['percentFailed']); ?>%"></div>
+                    </div>
+
+                    <h4>Incomplete (<?php echo $this->escape($stats['suites']['incomplete']); ?>/<?php echo $this->escape($stats['suites']['total']); ?>)</h4>
+                    <div class="progress progress-warning">
+                      <div class="bar" style="width: <?php echo $this->escape($stats['suites']['percentIncomplete']); ?>%"></div>
+                    </div>
+
+                    <h4>Skipped (<?php echo $this->escape($stats['suites']['skipped']); ?>/<?php echo $this->escape($stats['suites']['total']); ?>)</h4>
+                    <div class="progress progress-info">
+                      <div class="bar" style="width: <?php echo $this->escape($stats['suites']['percentSkipped']); ?>%"></div>
+                    </div>
+
+                    <h4>Succeeded (<?php echo $this->escape($stats['suites']['succeeded']); ?>/<?php echo $this->escape($stats['suites']['total']); ?>)</h4>
+                    <div class="progress progress-success">
+                      <div class="bar" style="width: <?php echo $this->escape($stats['suites']['percentSucceeded']); ?>%"></div>
+                    </div>
+                </div>
+
+                <div class='span4 offset1'>
+                    <h3>Test Statistics</h3>
+
+                    <h4>Failed (<?php echo $this->escape($stats['tests']['failed']); ?>/<?php echo $this->escape($stats['tests']['total']); ?>)</h4>
+                    <div class="progress progress-danger">
+                      <div class="bar" style="width: <?php echo $this->escape($stats['tests']['percentFailed']); ?>%"></div>
+                    </div>
+
+                    <h4>Incomplete (<?php echo $this->escape($stats['tests']['incomplete']); ?>/<?php echo $this->escape($stats['tests']['total']); ?>)</h4>
+                    <div class="progress progress-warning">
+                      <div class="bar" style="width: <?php echo $this->escape($stats['tests']['percentIncomplete']); ?>%"></div>
+                    </div>
+
+                    <h4>Skipped (<?php echo $this->escape($stats['tests']['skipped']); ?>/<?php echo $this->escape($stats['tests']['total']); ?>)</h4>
+                    <div class="progress progress-info">
+                      <div class="bar" style="width: <?php echo $this->escape($stats['tests']['percentSkipped']); ?>%"></div>
+                    </div>
+
+                    <h4>Succeeded (<?php echo $this->escape($stats['tests']['succeeded']); ?>/<?php echo $this->escape($stats['tests']['total']); ?>)</h4>
+                    <div class="progress progress-success">
+                      <div class="bar" style="width: <?php echo $this->escape($stats['tests']['percentSucceeded']); ?>%"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <?php if ( !empty($errors) ): ?>
+            <h3>Errors</h3>
+            <?php endif; ?>
+
+            <?php foreach ( $errors as $error ): ?>
+            <div class="alert alert-block alert-failed">
+                <h4 class="alert-heading"><?php echo $this->escape($error['type']); ?></h4>
+                <p class='error-message'>
+                    <strong><?php echo $this->escape($error['message']); ?></strong>
+                </p>
+                <ul class='nav'>
+                    <li class='error-details'>
+                        <em>File:</em>
+                        <?php echo $this->escape($error['file']); ?>
+                    </li>
+                    <li class='error-details'>
+                        <em>Line:</em>
+                        <?php echo $this->escape($error['line']); ?>
+                    </li>
+                </ul>
+            </div>
+            <?php endforeach; ?>
